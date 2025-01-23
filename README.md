@@ -16,6 +16,7 @@ Focused on SEO checks and UX/UI validation of the https://www.getapp.com platfor
 Industry: Printing / Advertising
 Led quality checks of internal web applications tools to support production process, including printing books.
 
+![]([URL](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTY0cDU5MTNkbGR1aHFqcTVvMzVhdTB1dWdiZTRtcXNobTFtZ3UzdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vNpHoJooVEMzfXzZqa/giphy.gif))
 
 ## 2. Manual testing
 
