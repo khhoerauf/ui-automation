@@ -1,58 +1,59 @@
-# Quality Assurance
+# Cypress Test Suite
 
-## 1. About you
+The tests are built with [Cypress](https://www.cypress.io) and are executable on Chrome, Firefox, and WebKit browsers. Additionally, the tests run on a predefined viewport matching the MacBook 15" screen size, which can be adjusted if necessary. Test suite should focus on making sure that user can see all needed information about book and can easily sort list or search. 
 
-Tell us briefly (2-5 paragraphs) about your experience testing a commercial project.
+#### Table of Contents
 
-- Company: Chartboost
+- [FOLDER STRUCTURE](#folder-structure)
+- [LOCAL DEVELOPMENT](#local-development)
+- [RUNNING TESTS](#running-tests)
+- [UI AUTOMATION STRATEGY](#ui-automation-strategy)
+- [KNOWN ISSUES](#known-issues-and-potential-improvements)
 
-  - Industry: Mobile Advertising
-    Led quality checks for ad rendering across various devices, ensuring optimal performance and user experience.
+## Folder Structure
 
-- Company: Gartner (GetApp)
+```
+/reedsy-challenge-quality-assurance 
+│  └── app/                     # Test application
+│       ├──frontend
+│       └──server      
+└── cypress/
+│        ├── e2e/                # Test specifications
+│        ├── page/               # Page Object Model (POM) files for test
+│        ├── support/            # Common cypress functions
+│        ├── cypress.conf.js     # Cypress default configuration
+│        └── package.json        # Node.js dependencies and scripts
+└── package.json                 # Support to manage multiple packages 
+```
 
-  - Industry: Advertising
-    Focused on SEO checks and UX/UI validation of the https://www.getapp.com platform.
+## Local Development
 
-- Company: Quad
-  - Industry: Printing / Advertising
-    Led quality checks of internal web applications tools to support production process, including printing books.
+## Precondition
 
+- Before you begin, ensure that Node.js is installed on your system.
+- Ensure that you have at least one modern browser Chrome or Firefox installed. 
+  All supported browsers can be found [here](https://docs.cypress.io/app/references/launching-browsers#Browsers)
 
-![](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTY0cDU5MTNkbGR1aHFqcTVvMzVhdTB1dWdiZTRtcXNobTFtZ3UzdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vNpHoJooVEMzfXzZqa/giphy.gif)
+## Install Dependencies and start test application locally
 
-## 2. Manual testing
+1. Run `npm install`
+2. Run `npm run start` to start running application at http://localhost:5173/
 
-There's a simple Node.js bookshelf app in the `qa/` directory.
+## Running Tests
 
-To run it:
+### Using Cypress GUI
 
-1. [Install Node.js v20](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)
-2. `cd qa/`
-3. `npm install`
-4. `npm start`
-5. The frontend will be running at http://localhost:5173/
+- Run `npm run cy:open` to open the Cypress application and run tests interactively.
 
-Once the app is up and running, please perform manual adhoc testing:
+### Using Cypress in headless mode
 
-- [x] Write up any bugs you find, as if you're raising a ticket - [here](./test-report.md)
-- [x] Include repro steps
-- [x] Test across multiple devices and browsers, and include this information where relevant - DONE included as precondition in bug report
-- [x] Even if they're not strictly bugs, flag any parts of the UI/UX that feel like they could be improved, and provide a possible suggestion - DONE ass suggestions in the bug report
+- Run `npm run ci:e2e:chrome` to execute all tests in a headless Chrome browser.
+- Run `npm run ci:e2e:firefox` to execute all tests in a headless Firefox browser.
+- Run `npm run ci:e2e:webkit` to execute all tests in a headless Webkit browser (Safari).
 
-## 3. Automated testing
+## UI Automation strategy
 
-Please write some automated end-to-end tests for this app. - [here](cypress.md)
-
-You **should**:
-
-- [x] include simple instructions for running the tests, including installing any tools
-- [x] write **failing** tests for the **two highest priority bugs**
-- [x] explain why these are the highest priority bugs
-- [x] write a **passing** test for a working feature
-- [x] explain why this passing test is worthwhile
-- [x] write robust, maintainable tests
-
-You **may**:
-
-- [x] use any automated testing tools you like
+- Before executing each step in the test, ensure that the application is in the correct state (can be achieved by checking API response finished, loading icon is hidden etc.).
+- Tests executed on each PR push, should focus on the critical user journeys of the application.
+- Avoid hardcoding test data within the test scripts.
+- Introduce the unique `data-testid`/`id` attributes if possible, to locate and interact with elements in the DOM.

@@ -7,7 +7,8 @@ module.exports = defineConfig({
 		viewportHeight: 900,
 		video: false,
 		baseUrl: 'http://localhost:5173',
-		specPattern: 'cypress/e2e/**-test.js',
+		specPattern: './e2e/**-test.js',
 		experimentalWebKitSupport: true,
+		supportFile: './support/e2e.js',
 	},
 })

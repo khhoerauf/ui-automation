@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "",
+  "author": "@reedsy team",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

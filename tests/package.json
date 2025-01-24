@@ -1,29 +1,21 @@
 {
-	"name": "qa",
+	"name": "cypress",
 	"version": "1.0.0",
-	"description": "",
+	"description": "ui automation test suite",
 	"main": "index.js",
 	"engines": {
 		"node": "20.11.1"
 	},
 	"scripts": {
-		"start": "concurrently 'npm:start:frontend' 'npm:start:server'",
-		"start:frontend": "npm start -w frontend",
-		"start:server": "npm start -w server",
 		"cy:open": "cypress open",
 		"cy:run:chrome": "cypress run --browser chrome",
 		"cy:run:firefox": "cypress run --browser firefox",
 		"cy:run:webkit": "cypress run --browser webkit",
-		"format": "prettier 'cypress/*/**.js' --write"
+		"cy:run:ci": "npm run start && cypress run --browser chrome",
+		"format": "prettier 'cypress/*/**.js' --write ."
 	},
-	"author": "",
+	"author": "@khhoerauf",
 	"license": "ISC",
-	"workspaces": [
-		"packages/*"
-	],
-	"dependencies": {
-		"concurrently": "^8.2.2"
-	},
 	"devDependencies": {
 		"cypress": "^13.17.0",
 		"playwright-webkit": "^1.49.1",
